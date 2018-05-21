@@ -1,7 +1,22 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
-
 ---
+
+## Introduction
+The purpose of this project was to "build a PID controller and tune the PID hyperparameters by applying the general processing flow as described in the lessons," and to "test your solution on the simulator!" The simulator provides cross-track error (CTE), speed, and steering angle data via local websocket. The PID (proportional/integral/differential) controller must respond with steering and throttle commands to drive the car reliably around the simulator track.
+
+## Rubric Discussion Points
+- *Describe the effect each of the P, I, D components had in your implementation.*
+
+The P controller controls the speed smoothly, allowing it to slow down as it approaches it's target, to shrink the overshoot. That's why it is called a proportional controller – the output speed is proportional to the value remaining to be changed, which we call an error or CTE.
+
+The proportional part of the code has got it so that the error remaining is pretty small. Too small for the proportional section to make much of a difference. This is where the integral comes in. The integral is the 
+running sum of previous errors. So when the error is very small, the integral comes into action. The integral wants to get it so that it travels fast enough to shrink the error, but not too fast,because then it might run the risk of overshooting. The way it decides how fast to go is that it will gently accelerate.
+
+The job of the derivative--"D controller", is to predict the future value for the error, and then make the speed act accordingly. For example, if it thinks it will overshoot, it will slow it down.
+
+- *Describe how the final hyperparameters were chosen.*
+Hyperparameters were chosen based on Sebastian's lesson, in the lesson he said the pid = [0.2, 0.004, 3.0] is a wise choose. So i choose to believe him and the car runs well.
 
 ## Dependencies
 
